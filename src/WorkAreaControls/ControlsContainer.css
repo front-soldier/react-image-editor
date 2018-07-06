@@ -1,0 +1,51 @@
+.controls-field {
+    border: 1px solid black;
+    flex: 0 0 300px;
+    box-sizing: border-box;
+}
+.controls {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 10px 0;
+}
+.controls .control-item {
+    margin: 5px auto;
+}
+.controls .control-item .control-button {
+    width: 100%;
+    max-width: 80px;
+    margin: 0 auto;
+    display: block;
+    border: none;
+    line-height: 25px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: capitalize;
+    transition: .5s;
+}
+
+.filter-controls {
+}
+.filter-controls .filter-item {
+    flex: 1 1 calc(33%);
+}
+.filter-controls .filter-item .control-button {
+    background-color: rgb(100, 153, 255);
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 10px 0px;
+    color: white;
+}
+
+.shape-controls {
+}
+.shape-controls .shape-item {
+    flex: 1 1 calc(50%);
+}
+.shape-controls .shape-item .control-button {
+    background-color: rgb(255, 34, 68);
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 10px 0px;
+    color: white;
+}
+.active .control-button {
+    transform: scale(1.2);
+}

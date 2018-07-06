@@ -1,0 +1,13 @@
+.canvas-field {
+    flex: 1 1 calc(100vw - 300px);
+    border: 1px solid black;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.work-canvas {
+    display: block;
+    /*margin-bottom: -4px;*/
+}
