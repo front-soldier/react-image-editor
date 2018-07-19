@@ -40,7 +40,6 @@ class App extends Component {
                 }
             },
             activeDraw: {
-                drawActive: false,
                 drawColor: '#df4b26',
                 shapeSizeName: 'normal',
                 shapeSizeValue: 5
@@ -48,7 +47,12 @@ class App extends Component {
             canvasState: {...defaultCanvasState},
             activeFilter: {...defaultActiveFilter},
             filters: {...defaultFilters},
-            activeAction: ''
+            activeAction: '',
+            cropper: {
+                cropperRef: React.createRef(),
+                height: 200,
+                width: 200
+            }
         };
         this.history = [];
         this.history.push(JSON.parse(JSON.stringify(this.state)));
@@ -56,21 +60,18 @@ class App extends Component {
     }
 
     imageChanged = (image) => {
+        const defaultCanvasState = {
+            clickX: [],
+            clickY: [],
+            clickDrag: [],
+            clickColor: [],
+            clickSize: []
+        };
         this.setState({
             image: image,
             filters: {...defaultFilters},
             canvasState: {...defaultCanvasState},
             activeFilter: {...defaultActiveFilter}
-        }, () => {
-            this.addStory();
-        });
-    };
-
-    drawActiveChanged = (shape) => {
-        this.setState((prevState) => {
-            const newState =  {...prevState};
-            newState.activeDraw.drawActive = shape;
-            return newState;
         }, () => {
             this.addStory();
         });
@@ -137,7 +138,7 @@ class App extends Component {
         });
     };
     addStory = () => {
-        if (this.history.length >= 30) { // memory size
+        if (this.history.length >= 50) { // memory size
             this.history.shift();
         }
         this.history = this.history.slice(0, this.historyPointer);
@@ -178,6 +179,27 @@ class App extends Component {
     activeActionChanged = (newAction) => {
         this.setState({
             activeAction: newAction
+        }, () => {this.addStory()});
+    };
+    cropHandle = () => {
+        const src = this.state.cropper.cropperRef.current.crop();
+        const values = this.state.cropper.cropperRef.current.values();
+        const image = {
+            imageUrl: src,
+            dimensions: {
+                width: values.display.width,
+                height: values.display.height
+            }
+        };
+        this.imageChanged(image);
+        this.activeActionChanged('');
+    };
+    cropperDimensionsChanged = (dimensions) => {
+        this.setState((prevState) => {
+            const newState =  {...prevState};
+            newState.cropper.height = +dimensions.height;
+            newState.cropper.width = +dimensions.width;
+            return newState;
         });
     };
 
@@ -191,8 +213,7 @@ class App extends Component {
                                  cancelDisabled={this.state.image.imageUrl === ''}
                                  imageChanged={this.imageChanged}
                 />
-                <ControlBarComponent drawActiveChanged={this.drawActiveChanged}
-                                     activeFilterChanged={this.activeFilterChanged}
+                <ControlBarComponent activeFilterChanged={this.activeFilterChanged}
                                      filterChanged={this.filterChanged}
                                      activeFilter={this.state.activeFilter}
                                      drawColor={this.state.activeDraw.drawColor}
@@ -204,15 +225,22 @@ class App extends Component {
                                      addStory={this.addStory}
                                      activeAction={this.state.activeAction}
                                      activeActionChanged={this.activeActionChanged}
+                                     cropHandle={this.cropHandle}
+                                     cropperHeight={this.state.cropper.height}
+                                     cropperWidth={this.state.cropper.width}
+                                     cropperDimensionsChanged={this.cropperDimensionsChanged}
                 />
-                <WorkAreaContainerComponent currState={this.state}
-                                            filters={this.state.filters}
+                <WorkAreaContainerComponent filters={this.state.filters}
                                             image={this.state.image}
                                             canvasState={this.state.canvasState}
                                             canvasStateChanged={this.canvasStateChanged}
                                             activeDraw={this.state.activeDraw}
                                             imageChanged={this.imageChanged}
-                                            addStory={this.addStory}/>
+                                            addStory={this.addStory}
+                                            activeAction={this.state.activeAction}
+                                            cropper={this.state.cropper}
+                                            cropperDimensionsChanged={this.cropperDimensionsChanged}
+                />
             </div>
         );
     }

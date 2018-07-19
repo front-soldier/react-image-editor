@@ -1,18 +1,18 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import './ControlBarComponent.css';
 import DownloadComponent from './DownloadComponent/DownloadComponent';
 import FilterContainerComponent from './FilterContainerComponent/FilterContainerComponent';
 import CropContainerComponent from './CropContainerComponent/CropContainerComponent';
 import DrawContainerComponent from './DrawContainerComponent/DrawContainerComponent';
+import ApplyComponent from './ApplyComponent/ApplyComponent';
 
 import filterImage from './FilterContainerComponent/filter.png';
 import drawImage from './DrawContainerComponent/draw.png';
 import cropImage from './CropContainerComponent/crop.png';
 
-export default class ControlBarComponent extends PureComponent {
+export default class ControlBarComponent extends Component {
     render() {
         const {
-            drawActiveChanged,
             filterChanged,
             activeFilter,
             activeFilterChanged,
@@ -24,7 +24,11 @@ export default class ControlBarComponent extends PureComponent {
             filters,
             imageUrl,
             activeAction,
-            activeActionChanged
+            activeActionChanged,
+            cropHandle,
+            cropperHeight,
+            cropperWidth,
+            cropperDimensionsChanged
         } = this.props;
 
         let renderList;
@@ -44,17 +48,41 @@ export default class ControlBarComponent extends PureComponent {
                         activeFilter={activeFilter}
                         activeActionChanged={activeActionChanged}
                         imageUrl={imageUrl}
+                        addStory={addStory}
+                        filterChanged={filterChanged}
                     />
                 ); break;
-                case 'crop': renderList = (<CropContainerComponent/>); break;
-                case 'draw': renderList = (<DrawContainerComponent/>); break;
+                case 'crop': renderList = (
+                    <CropContainerComponent
+                        activeActionChanged={activeActionChanged}
+                        imageUrl={imageUrl}
+                        cropperHeight={cropperHeight}
+                        cropperWidth={cropperWidth}
+                        cropperDimensionsChanged={cropperDimensionsChanged}
+                    />
+                ); break;
+                case 'draw': renderList = (
+                    <DrawContainerComponent
+                        shapeSizeName={shapeSizeName}
+                        shapeSizeChanged={shapeSizeChanged}
+                        activeActionChanged={activeActionChanged}
+                        imageUrl={imageUrl}
+                        drawColor={drawColor}
+                        drawColorChanged={drawColorChanged}
+                    />
+                ); break;
+                default: break;
             }
         }
 
         return (
             <div className={'control-bar'}>
                 { renderList }
-                <DownloadComponent filters={filters} imageUrl={imageUrl}/>
+                {activeAction === 'crop' ? (
+                    <ApplyComponent cropHandle={cropHandle} imageUrl={imageUrl}/>
+                ) : (
+                    <DownloadComponent filters={filters} imageUrl={imageUrl}/>
+                )}
             </div>
         )
     }

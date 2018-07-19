@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './DrawSizeComponent.css';
 
 export default class DrawSizeComponent extends Component {
     sizeName = this.props.sizeName;
@@ -7,8 +8,8 @@ export default class DrawSizeComponent extends Component {
     };
     render() {
         return (
-            <div className={'control-item filter-item ' + (this.props.shapeSizeName === this.sizeName ? 'active' : '')}>
-                <button className='control-button' onClick={this.propertyChange}>{this.sizeName}</button>
+            <div className={'draw-item'}>
+                <button className={'circle-button ' + this.sizeName + (this.props.shapeSizeName === this.sizeName ? ' active' : '')} onClick={this.propertyChange}/>
             </div>
         )
     }

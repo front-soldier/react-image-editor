@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Cropper } from 'react-image-cropper';
 
 export default class WorkAreaComponent extends Component {
     constructor(props) {
@@ -7,6 +8,8 @@ export default class WorkAreaComponent extends Component {
             canvasRef: React.createRef(),
             context: {},
             paint: false,
+            cropperRef: React.createRef(),
+            cropperSrc: ''
         };
     }
     componentDidMount() {
@@ -69,11 +72,51 @@ export default class WorkAreaComponent extends Component {
             paint: false
         });
     };
+    calcCropImage = () => {
+        const {
+            filters,
+        } = this.props;
+        const result = document.createElement('canvas');
+        const canvas = this.state.canvasRef.current;
+        result.width = canvas.width;
+        result.height = canvas.height;
+        const context = result.getContext('2d');
+        context.filter = `blur(${filters.blur}px) `
+            + `brightness(${filters.brightness}%) `
+            + `contrast(${filters.contrast}%) `
+            + `grayscale(${filters.grayscale}%) `
+            + `hue-rotate(${filters.hueRotate}deg) `
+            + `invert(${filters.invert}%) `
+            + `opacity(${filters.opacity}%) `
+            + `saturate(${filters.saturate}%) `
+            + `sepia(${filters.sepia}%)`;
+        const image = new Image();
+        image.onload = () => {
+            context.drawImage(image, 0, 0, canvas.width, canvas.height);
+            context.drawImage(canvas, 0, 0, canvas.width, canvas.height);
+            this.setState({
+                cropperSrc: result.toDataURL()
+            });
+        };
+        image.src = this.props.image.imageUrl;
+    };
     componentDidUpdate() {
         this.redraw();
+        if (this.props.activeAction === "crop" && !this.state.cropperSrc) {
+            this.calcCropImage();
+        }
+        if (this.props.activeAction !== "crop") {
+            this.state.cropperSrc = '';
+        }
     }
+    cropperDimensionsHandler = (values) => {
+        this.props.cropperDimensionsChanged({
+            height: values.display.height,
+            width: values.display.width
+        });
+    };
     render() {
-        const { filters, image } = this.props;
+        const { filters, image, activeAction} = this.props;
         const background = {
             backgroundImage: 'url(' + image.imageUrl + ')'
         };
@@ -91,7 +134,8 @@ export default class WorkAreaComponent extends Component {
         };
         const canvasStyle = {...background, ...resultFilters};
         return (
-            <canvas className="work-canvas"
+            <div>
+                <canvas className={'work-canvas ' + (activeAction === "crop" ? 'canvas-off' : '')}
                     style={canvasStyle}
                     width={image.dimensions.width}
                     height={image.dimensions.height}
@@ -100,7 +144,19 @@ export default class WorkAreaComponent extends Component {
                     onMouseMove={(event) => {this.handleMouseMove(event)}}
                     onMouseUp={(event) => {this.handleMouseUp(event)}}
                     onMouseLeave={(event) => {this.handleMouseLeave(event)}}>
-            </canvas>
+                </canvas>
+                {(activeAction === "crop" && this.state.cropperSrc) ? (
+                    <Cropper
+                        src={this.state.cropperSrc}
+                        ref={this.props.cropper.cropperRef}
+                        fixedRatio={false}
+                        width={this.props.cropper.width}
+                        height={this.props.cropper.height}
+                        onChange={this.cropperDimensionsHandler}
+                    />
+                ) : ( null
+                )}
+            </div>
         );
     }
 }

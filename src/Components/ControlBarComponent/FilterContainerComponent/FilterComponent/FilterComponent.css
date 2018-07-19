@@ -1,5 +1,14 @@
 .filter-item {
     margin: 0 20px;
+    transition: 0.5s;
+    background: transparent;
+}
+.filter-item.active {
+    transform: scale(1.1);
+    /*border: 1px solid #cbcbcb;*/
+    box-shadow: 0 1px 5px 2px rgba(0,0,0,0.25);
+    /*box-shadow: 0 0 80px 1px rgba(7, 211, 204, 0.5);*/
+
 }
 .filter-image {
     height: 50px;
@@ -9,6 +18,6 @@
 }
 .filter-title {
     text-align: center;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     text-transform: capitalize;
 }

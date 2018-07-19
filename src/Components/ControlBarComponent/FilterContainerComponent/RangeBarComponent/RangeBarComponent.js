@@ -60,6 +60,7 @@ export default class RangeBarComponent extends Component {
         }
         return (
             <div className="rangebar-container">
+                <div className={'minus-image'}/>
                 <input className={'rangebar' + (!this.props.activeFilter.filterValue ? ' disabled ' : '')}
                        type="range"
                        max={max}
@@ -67,6 +68,7 @@ export default class RangeBarComponent extends Component {
                        value={this.props.activeFilter.filterValue}
                        onChange={(event) => {this.filterValueChanged(event)}}
                        onMouseUp={this.handleMouseUp}/>
+                <div className={'plus-image'}/>
             </div>
         );
     }

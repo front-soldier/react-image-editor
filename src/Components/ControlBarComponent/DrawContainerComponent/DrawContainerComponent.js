@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import ColorPickerComponent from './ColorPickerComponent/ColorPickerComponent';
 import DrawSizeComponent from './DrawSizeComponent/DrawSizeComponent';
+import './DrawContainerComponent.css'
 import drawImage from './draw.png';
 
 export default class FilterContainerComponent extends Component {
     render() {
         const {
             shapeSizeName,
-            shapeSizeChanged
+            shapeSizeChanged,
+            activeActionChanged,
+            imageUrl,
+            drawColor,
+            drawColorChanged
         } = this.props;
         const sizesArray = ['small', 'normal', 'large', 'huge'];
         const SizesRenderList = sizesArray.map((size, index) => {
@@ -16,19 +21,25 @@ export default class FilterContainerComponent extends Component {
             );
         });
         return (
-            <div>
-                <div>
-                    <img className={'control-image'} src={ drawImage } alt=""/>
-                </div>
+            <div className={'draw-control-item'}>
+                <img onClick={() => {activeActionChanged('')}} className={'control-bar-image'} src={ drawImage } alt=""/>
                 <div className={'separator'}/>
-                <div className={'filters'}>
-                    <div className={'filters-list'}>
-                        {SizesRenderList}
+                {imageUrl ? (
+                    <div className={'draw-render'}>
+                        <ColorPickerComponent
+                            drawColor={drawColor}
+                            drawColorChanged={drawColorChanged}
+                        />
+                        <div className={'draw-size-section'}>
+                            <div className={'draw-size-title'}>Brush size</div>
+                            <div className={'draw-size-list'}>
+                                {SizesRenderList}
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className={''}>
-                    <ColorPickerComponent/>
-                </div>
+                ) : (
+                    <div>Please upload image</div>
+                )}
             </div>
         )
     }

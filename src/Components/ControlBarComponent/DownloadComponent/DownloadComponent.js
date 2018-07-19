@@ -31,9 +31,12 @@ export default class DownloadComponent extends Component {
           link.click();
       };
       image.src = imageUrl;
-  }
+  };
 
   render() {
+      if (!this.props.imageUrl) {
+          return null
+      }
       return (
           <div className={'download-panel'}>
               <button onClick={this.clickHandler} className={'download-button'}>Download</button>

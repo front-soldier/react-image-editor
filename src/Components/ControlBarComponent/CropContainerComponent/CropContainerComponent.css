@@ -1,0 +1,101 @@
+.crop-control-item {
+    display: flex;
+    align-items: center;
+}
+.crop-render {
+    display: flex;
+    flex-flow: row nowrap;
+}
+.crop-dimensions {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-left: 20px;
+    justify-content: space-between;
+}
+.crop-title {
+    display: inline-block;
+    color: rgb(7, 211, 204);
+    width: 20px;
+    margin: 0 10px;
+    text-align: center;
+}
+.crop-input {
+    height: 20px;
+    width: 100px;
+}
+.crop-rectangle {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
+.crop-rectangle .topbottom,
+.crop-rectangle .leftright
+{
+    position:absolute;
+    width:100%;
+    height:100%;
+    z-index: 1;
+}
+.crop-rectangle .leftright:after
+{
+    content:'';
+    position:absolute;
+    bottom:0;
+    left:0;
+    top:0;
+    right:2px;
+    height:100%;
+    width:2px;
+    background-image: linear-gradient(to top, #b9b9b8 75%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-size: 2px 15px;
+    background-repeat: repeat-y;
+}
+.crop-rectangle .leftright:before
+{
+    content:'';
+    position:absolute;
+    bottom:0;
+    top:0;
+    right:0px;
+    height:100%;
+    width:2px;
+    background-image: linear-gradient(to top, #b9b9b8 75%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-size: 2px 15px;
+    background-repeat: repeat-y;
+}
+.crop-rectangle .topbottom:before
+{
+    content:'';
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    height:2px;
+    width:100%;
+    background-image: linear-gradient(to right, #b9b9b8 75%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-size: 15px 2px;
+    background-repeat: repeat-x;
+}
+.crop-rectangle .topbottom:after
+{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:2px;
+    width:100%;
+    background-image: linear-gradient(to right, #b9b9b8 75%, rgba(255, 255, 255, 0) 0%);
+    background-position: top;
+    background-size: 15px 2px;
+    background-repeat: repeat-x;
+}
+.crop-custom {
+    font-size: 0.7rem;
+    text-align: center;
+    margin-bottom: 10px;
+}

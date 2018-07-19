@@ -1,0 +1,20 @@
+.draw-control-item {
+    display: flex;
+    align-items: center;
+}
+.draw-render {
+    display: flex;
+}
+.draw-size-list {
+    display: flex;
+    align-items: flex-end;
+}
+.draw-size-section {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin-left: 20px;
+}
+.draw-size-title {
+    font-size: 0.7rem;
+}

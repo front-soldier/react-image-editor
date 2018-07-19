@@ -49,8 +49,8 @@ export default class PickImageComponent extends Component {
             <div className='pick-image-item'>
                 <input id='file' className='file-input' type="file" onChange={(event) => { this.imagePicked(event) }}/>
                 <label htmlFor="file" className='file-label'>Upload a file</label>
-                <div className='topbottom'></div>
-                <div className='leftright'></div>
+                <div className='topbottom'/>
+                <div className='leftright'/>
             </div>
         );
     }

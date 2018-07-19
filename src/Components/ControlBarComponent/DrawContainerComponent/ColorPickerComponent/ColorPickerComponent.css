@@ -1,0 +1,24 @@
+.color-picker {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    position: relative;
+}
+.color-picker-title {
+    margin-bottom: 5px;
+    font-size: 0.7rem;
+}
+.color-picker-button {
+    background: url("./conic-gradient.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    border: 2px solid #cfd9e0;
+    cursor: pointer;
+}
+.color-picker-button:focus {
+    outline: none;
+}
