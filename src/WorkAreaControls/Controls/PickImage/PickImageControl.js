@@ -22,8 +22,8 @@ export default class PickImageControl extends Component {
         reader.readAsDataURL(img);
     };
     calcImageDimensions = (i) => {
-        const maxWidth = window.innerWidth - 300;
-        const maxHeight = window.innerHeight;
+        const maxWidth = window.innerWidth - 300; //300px right control panel
+        const maxHeight = window.innerHeight - 100;
         let width = i.naturalWidth;
         let height = i.naturalHeight;
         let ratio = 0;

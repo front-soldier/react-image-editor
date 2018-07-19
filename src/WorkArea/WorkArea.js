@@ -65,12 +65,6 @@ export default class WorkArea extends Component {
         this.setState({
             paint: false
         });
-        // this.setState({
-        //     paint: false,
-        //     clickX: [],
-        //     clickY: [],
-        //     clickDrag: []
-        // });
     };
     render() {
         const background = {

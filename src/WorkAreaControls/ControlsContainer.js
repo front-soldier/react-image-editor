@@ -7,6 +7,7 @@ import FilterControl from './Controls/Filters/FilterControl';
 import FiltersRangeBar from './Controls/RangeBar/FiltersRangeBar';
 import ColorPickerControl from './Controls/ColorPicker/ColorPickerControl';
 import ShapeSizeControl from './Controls/ShapeSize/ShapeSizeControl';
+import DownloadControl from './Controls/Download/DownloadControl';
 
 export default class ControlsContainer extends Component {
     render() {
@@ -25,17 +26,17 @@ export default class ControlsContainer extends Component {
         return (
             <div className='controls-field'>
                 <div className='controls pick-image-controls'>
-                    <PickImageControl imageChanged={this.props.imageChanged}></PickImageControl>
+                    <PickImageControl imageChanged={this.props.imageChanged}/>
                 </div>
                 <div className='controls shape-controls'>
-                    <WriteLineControl currentShapeChanged={this.props.currentShapeChanged}></WriteLineControl>
-                    <WriteRectangleControl currentShapeChanged={this.props.currentShapeChanged}></WriteRectangleControl>
+                    <WriteLineControl currentShapeChanged={this.props.currentShapeChanged}/>
+                    <WriteRectangleControl currentShapeChanged={this.props.currentShapeChanged}/>
                 </div>
                 <div className='controls filter-controls'>
                     {FiltersRenderList}
                 </div>
                 <div>
-                    <FiltersRangeBar filterChanged={this.props.filterChanged} activeFilter={this.props.activeFilter}></FiltersRangeBar>
+                    <FiltersRangeBar filterChanged={this.props.filterChanged} activeFilter={this.props.activeFilter}/>
                 </div>
                 <div>
                     <ColorPickerControl
@@ -44,6 +45,9 @@ export default class ControlsContainer extends Component {
                 </div>
                 <div className='controls'>
                     {SizesRenderList}
+                </div>
+                <div className='controls'>
+                    <DownloadControl filters={this.props.filters} imageUrl={this.props.imageUrl}/>
                 </div>
             </div>
         )

@@ -18,7 +18,7 @@ const defaultFilters = {
 class App extends Component {
     constructor(props) {
         super(props);
-        const defFil = JSON.parse(JSON.stringify(defaultFilters));
+        const defFil = {...defaultFilters};
         this.state = {
             image: {
                 imageUrl: '',
@@ -32,6 +32,16 @@ class App extends Component {
                 shapeColor: '#df4b26',
                 shapeSizeName: 'normal',
                 shapeSizeValue: 5
+            },
+            canvasState: {
+                canvasRef: React.createRef(),
+                context: {},
+                paint: false,
+                clickX: [],
+                clickY: [],
+                clickDrag: [],
+                clickColor: [],
+                clickSize: [],
             },
             activeFilter: {
                 currentFilter: '',
@@ -117,7 +127,9 @@ class App extends Component {
                                    shapeColor={this.state.activeShape.shapeColor}
                                    shapeColorChanged={this.shapeColorChanged}
                                    shapeSizeName={this.state.activeShape.shapeSizeName}
-                                   shapeSizeChanged={this.shapeSizeChanged}/>
+                                   shapeSizeChanged={this.shapeSizeChanged}
+                                   filters={this.state.filters}
+                                   imageUrl={this.state.image.imageUrl}/>
             </div>
         );
     }
