@@ -49,6 +49,10 @@ export default class ControlsContainer extends Component {
                 <div className='controls'>
                     <DownloadControl filters={this.props.filters} imageUrl={this.props.imageUrl}/>
                 </div>
+                <div>
+                    <div onClick={this.props.undoState}>Undo</div>
+                    <div onClick={this.props.redoState}>Redo</div>
+                </div>
             </div>
         )
     }

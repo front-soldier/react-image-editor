@@ -8,7 +8,12 @@ export default class WorkAreaContainer extends Component {
             <div className='canvas-field'>
                 <WorkArea
                     currState={this.props.currState}
-                    activeShape={this.props.activeShape}/>
+                    activeShape={this.props.activeShape}
+                    filters={this.props.filters}
+                    image={this.props.image}
+                    canvasState={this.props.canvasState}
+                    canvasStateChanged={this.props.canvasStateChanged}
+                />
             </div>
         );
     }

@@ -19,6 +19,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         const defFil = {...defaultFilters};
+        this.history = [];
+        this.historyPointer = this.history.length;
         this.state = {
             image: {
                 imageUrl: '',
@@ -34,9 +36,6 @@ class App extends Component {
                 shapeSizeValue: 5
             },
             canvasState: {
-                canvasRef: React.createRef(),
-                context: {},
-                paint: false,
                 clickX: [],
                 clickY: [],
                 clickDrag: [],
@@ -60,6 +59,8 @@ class App extends Component {
                 currentFilter: '',
                 filterValue: ''
             },
+        }, () => {
+            this.addToHistory();
         });
     };
 
@@ -68,6 +69,8 @@ class App extends Component {
             const newState =  {...prevState};
             newState.activeShape.currentShape = shape;
             return newState;
+        }, () => {
+            this.addToHistory();
         });
     };
 
@@ -76,6 +79,8 @@ class App extends Component {
             const newState =  {...prevState};
             newState.activeShape.shapeColor = color.hex;
             return newState;
+        }, () => {
+            this.addToHistory();
         });
     };
 
@@ -93,6 +98,8 @@ class App extends Component {
             newState.activeShape.shapeSizeName = sizeName;
             newState.activeShape.shapeSizeValue = size;
             return newState;
+        }, () => {
+            this.addToHistory();
         });
     };
 
@@ -102,6 +109,8 @@ class App extends Component {
                currentFilter: filter,
                filterValue: this.state.filters[filter]
            }
+        }, () => {
+            this.addToHistory();
         });
     };
 
@@ -111,13 +120,59 @@ class App extends Component {
             newState.filters[filter.type] = filter.value;
             newState.activeFilter.filterValue = filter.value;
             return newState;
+        }, () => {
+            this.addToHistory();
         });
+    };
+    canvasStateChanged = (mouseX, mouseY, dragging, shapeColor, shapeSizeValue) => {
+        this.setState((prevState) => {
+            const newState = {...prevState};
+            newState.canvasState.clickX.push(mouseX);
+            newState.canvasState.clickY.push(mouseY);
+            newState.canvasState.clickDrag.push(dragging);
+            newState.canvasState.clickColor.push(shapeColor);
+            newState.canvasState.clickSize.push(shapeSizeValue);
+            return newState;
+        }, () => {
+            this.addToHistoryDrawing();
+        });
+    };
+    addToHistory() {
+        this.addStory();
+    };
+    addToHistoryDrawing() {
+        const clickDrag = this.state.canvasState.clickDrag;
+        if (clickDrag[clickDrag.length-2] && !clickDrag[clickDrag.length-1]) // Check if the line was finished to draw
+        {
+            this.addStory();
+        }
+    }
+    addStory() {
+        if (this.history.length >= 20) {
+            this.history.shift();
+        }
+        this.history = this.history.slice(0, this.historyPointer);
+        this.history.push(JSON.parse(JSON.stringify(this.state)));
+        this.historyPointer++;
+        console.log(this.history);
+    }
+    undoState = () => {
+        this.historyPointer--;
+        this.setState(this.history[this.historyPointer - 1]);
+    };
+    redoState = () => {
+        this.historyPointer++;
+        this.setState(this.history[this.historyPointer - 1]);
     };
 
     render() {
         return (
             <div className='container'>
                 <WorkAreaContainer currState={this.state}
+                                   filters={this.state.filters}
+                                   image={this.state.image}
+                                   canvasState={this.state.canvasState}
+                                   canvasStateChanged={this.canvasStateChanged}
                                    activeShape={this.state.activeShape}/>
                 <ControlsContainer imageChanged={this.imageChanged}
                                    currentShapeChanged={this.currentShapeChanged}
@@ -129,7 +184,9 @@ class App extends Component {
                                    shapeSizeName={this.state.activeShape.shapeSizeName}
                                    shapeSizeChanged={this.shapeSizeChanged}
                                    filters={this.state.filters}
-                                   imageUrl={this.state.image.imageUrl}/>
+                                   imageUrl={this.state.image.imageUrl}
+                                   undoState={this.undoState}
+                                   redoState={this.redoState}/>
             </div>
         );
     }
