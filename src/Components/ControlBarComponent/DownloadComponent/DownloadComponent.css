@@ -1,0 +1,13 @@
+.download-panel {
+    display: flex;
+    align-items: center;
+}
+.download-button {
+    background-color: rgb(7, 211, 204);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    height: 50px;
+    padding: 0 20px;
+    font-weight: bold;
+}

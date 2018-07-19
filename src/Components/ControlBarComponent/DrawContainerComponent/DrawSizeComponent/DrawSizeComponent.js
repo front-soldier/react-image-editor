@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class ShapeSizeControl extends Component {
+export default class DrawSizeComponent extends Component {
     sizeName = this.props.sizeName;
     propertyChange = () => {
         this.props.shapeSizeChanged(this.sizeName);

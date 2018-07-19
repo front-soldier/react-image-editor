@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ChromePicker } from 'react-color';
 
-export default class ColorPickerControl extends Component {
+export default class ColorPickerComponent extends Component {
     state = {
         displayColorPicker: false,
     };
@@ -32,8 +32,8 @@ export default class ColorPickerControl extends Component {
                 { this.state.displayColorPicker ? <div style={ popover }>
                     <div style={ cover } onClick={ this.handleClose }/>
                     <ChromePicker
-                        color={this.props.shapeColor}
-                        onChangeComplete={this.props.shapeColorChanged}
+                        color={this.props.drawColor}
+                        onChangeComplete={this.props.drawColorChanged}
                         disableAlpha={true}/>
                 </div> : null }
             </div>

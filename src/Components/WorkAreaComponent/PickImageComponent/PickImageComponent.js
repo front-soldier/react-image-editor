@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import './PickImageControl.css';
+import './PickImageComponent.css';
 
-export default class PickImageControl extends Component {
+export default class PickImageComponent extends Component {
 
     imagePicked = (event) => {
         const img = event.target.files[0];
@@ -22,8 +22,8 @@ export default class PickImageControl extends Component {
         reader.readAsDataURL(img);
     };
     calcImageDimensions = (resultImage) => {
-        const rightControlPanel = 300;
-        const canvasPadding = 100;
+        const rightControlPanel = 100;
+        const canvasPadding = 200;
         const maxWidth = window.innerWidth - rightControlPanel;
         const maxHeight = window.innerHeight - canvasPadding;
         let width = resultImage.naturalWidth;
@@ -46,9 +46,11 @@ export default class PickImageControl extends Component {
     };
     render() {
         return (
-            <div className='control-item pick-image-item'>
+            <div className='pick-image-item'>
                 <input id='file' className='file-input' type="file" onChange={(event) => { this.imagePicked(event) }}/>
-                <label htmlFor="file" className='file-label'>Please, choose a file</label>
+                <label htmlFor="file" className='file-label'>Upload a file</label>
+                <div className='topbottom'></div>
+                <div className='leftright'></div>
             </div>
         );
     }

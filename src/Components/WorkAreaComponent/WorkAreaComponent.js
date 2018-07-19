@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class WorkArea extends Component {
+export default class WorkAreaComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,7 +15,7 @@ export default class WorkArea extends Component {
         });
     }
     addClick = (mouseX, mouseY, dragging) => {
-        this.props.canvasStateChanged(mouseX, mouseY, dragging, this.props.activeShape.shapeColor, this.props.activeShape.shapeSizeValue);
+        this.props.canvasStateChanged(mouseX, mouseY, dragging, this.props.activeDraw.drawColor, this.props.activeDraw.shapeSizeValue);
     };
     redraw = () => {
         const canvasContext = this.state.context;

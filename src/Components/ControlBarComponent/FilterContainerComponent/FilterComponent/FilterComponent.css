@@ -1,0 +1,14 @@
+.filter-item {
+    margin: 0 20px;
+}
+.filter-image {
+    height: 50px;
+    width: auto;
+    display: block;
+    margin: auto;
+}
+.filter-title {
+    text-align: center;
+    font-size: 0.7rem;
+    text-transform: capitalize;
+}

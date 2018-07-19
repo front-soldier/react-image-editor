@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import WorkAreaContainer from './Components/WorkArea/WorkAreaContainer';
-import ControlsContainer from "./WorkAreaControls/ControlsContainer";
+import WorkAreaContainerComponent from './Components/WorkAreaComponent/WorkAreaContainerComponent';
+import ControlBarComponent from './Components/ControlBarComponent/ControlBarComponent';
 import './App.css';
 import 'normalize.css';
+import TopBarComponent from "./Components/TopBarComponent/TopBarComponent";
 
 const defaultFilters = {
     blur: '0',
@@ -38,15 +39,16 @@ class App extends Component {
                     height: ''
                 }
             },
-            activeShape: {
-                currentShape: '',
-                shapeColor: '#df4b26',
+            activeDraw: {
+                drawActive: false,
+                drawColor: '#df4b26',
                 shapeSizeName: 'normal',
                 shapeSizeValue: 5
             },
             canvasState: {...defaultCanvasState},
             activeFilter: {...defaultActiveFilter},
-            filters: {...defaultFilters}
+            filters: {...defaultFilters},
+            activeAction: ''
         };
         this.history = [];
         this.history.push(JSON.parse(JSON.stringify(this.state)));
@@ -64,20 +66,20 @@ class App extends Component {
         });
     };
 
-    currentShapeChanged = (shape) => {
+    drawActiveChanged = (shape) => {
         this.setState((prevState) => {
             const newState =  {...prevState};
-            newState.activeShape.currentShape = shape;
+            newState.activeDraw.drawActive = shape;
             return newState;
         }, () => {
             this.addStory();
         });
     };
 
-    shapeColorChanged = (color) => {
+    drawColorChanged = (color) => {
         this.setState((prevState) => {
             const newState =  {...prevState};
-            newState.activeShape.shapeColor = color.hex;
+            newState.activeDraw.drawColor = color.hex;
             return newState;
         }, () => {
             this.addStory();
@@ -95,8 +97,8 @@ class App extends Component {
         }
         this.setState((prevState) => {
             const newState =  {...prevState};
-            newState.activeShape.shapeSizeName = sizeName;
-            newState.activeShape.shapeSizeValue = size;
+            newState.activeDraw.shapeSizeName = sizeName;
+            newState.activeDraw.shapeSizeValue = size;
             return newState;
         }, () => {
             this.addStory();
@@ -123,13 +125,13 @@ class App extends Component {
             return newState;
         });
     };
-    canvasStateChanged = (mouseX, mouseY, dragging, shapeColor, shapeSizeValue) => {
+    canvasStateChanged = (mouseX, mouseY, dragging, drawColor, shapeSizeValue) => {
         this.setState((prevState) => {
             const newState = {...prevState};
             newState.canvasState.clickX.push(mouseX);
             newState.canvasState.clickY.push(mouseY);
             newState.canvasState.clickDrag.push(dragging);
-            newState.canvasState.clickColor.push(shapeColor);
+            newState.canvasState.clickColor.push(drawColor);
             newState.canvasState.clickSize.push(shapeSizeValue);
             return newState;
         });
@@ -173,34 +175,44 @@ class App extends Component {
             this.undoState();
         }
     };
+    activeActionChanged = (newAction) => {
+        this.setState({
+            activeAction: newAction
+        });
+    };
 
     render() {
         return (
-            <div className='container'>
-                <ControlsContainer imageChanged={this.imageChanged}
-                                   currentShapeChanged={this.currentShapeChanged}
-                                   activeFilterChanged={this.activeFilterChanged}
-                                   filterChanged={this.filterChanged}
-                                   activeFilter={this.state.activeFilter}
-                                   shapeColor={this.state.activeShape.shapeColor}
-                                   shapeColorChanged={this.shapeColorChanged}
-                                   shapeSizeName={this.state.activeShape.shapeSizeName}
-                                   shapeSizeChanged={this.shapeSizeChanged}
-                                   filters={this.state.filters}
-                                   imageUrl={this.state.image.imageUrl}
-                                   addStory={this.addStory}>
-                    <div>
-                        <div className={(this.historyPointer <= 1 ? 'disabled' : '')} onClick={this.undoState}>Undo</div>
-                        <div className={(this.historyPointer >= this.history.length ? 'disabled' : '')} onClick={this.redoState}>Redo</div>
-                    </div>
-                </ControlsContainer>
-                <WorkAreaContainer currState={this.state}
-                                   filters={this.state.filters}
-                                   image={this.state.image}
-                                   canvasState={this.state.canvasState}
-                                   canvasStateChanged={this.canvasStateChanged}
-                                   activeShape={this.state.activeShape}
-                                   addStory={this.addStory}/>
+            <div className='root-container'>
+                <TopBarComponent undoState={this.undoState}
+                                 redoState={this.redoState}
+                                 undoDisabled={(this.historyPointer <= 1)}
+                                 redoDisabled={(this.historyPointer >= this.history.length)}
+                                 cancelDisabled={this.state.image.imageUrl === ''}
+                                 imageChanged={this.imageChanged}
+                />
+                <ControlBarComponent drawActiveChanged={this.drawActiveChanged}
+                                     activeFilterChanged={this.activeFilterChanged}
+                                     filterChanged={this.filterChanged}
+                                     activeFilter={this.state.activeFilter}
+                                     drawColor={this.state.activeDraw.drawColor}
+                                     drawColorChanged={this.drawColorChanged}
+                                     shapeSizeName={this.state.activeDraw.shapeSizeName}
+                                     shapeSizeChanged={this.shapeSizeChanged}
+                                     filters={this.state.filters}
+                                     imageUrl={this.state.image.imageUrl}
+                                     addStory={this.addStory}
+                                     activeAction={this.state.activeAction}
+                                     activeActionChanged={this.activeActionChanged}
+                />
+                <WorkAreaContainerComponent currState={this.state}
+                                            filters={this.state.filters}
+                                            image={this.state.image}
+                                            canvasState={this.state.canvasState}
+                                            canvasStateChanged={this.canvasStateChanged}
+                                            activeDraw={this.state.activeDraw}
+                                            imageChanged={this.imageChanged}
+                                            addStory={this.addStory}/>
             </div>
         );
     }

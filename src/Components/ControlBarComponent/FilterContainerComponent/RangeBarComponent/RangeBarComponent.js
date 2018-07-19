@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './FiltersRangeBar.css'
+import './RangeBarComponent.css'
 
-export default class FiltersRangeBar extends Component {
+export default class RangeBarComponent extends Component {
 
     filterValueChanged = (event) => {
         const filter = {

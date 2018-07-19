@@ -1,11 +1,10 @@
-.canvas-field {
-    flex: 1 1 calc(100vw - 300px);
-    border: 1px solid black;
+.edit-section {
+    background-color: rgb(244, 243, 243);;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: calc(100vh - 160px);
 }
 .work-canvas {
     display: block;
