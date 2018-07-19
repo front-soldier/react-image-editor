@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './ControlsContainer.css';
 import PickImageControl from './Controls/PickImage/PickImageControl';
-import WriteLineControl from './Controls/Shapes/WriteLineControl';
-import WriteRectangleControl from './Controls/Shapes/WriteRectangleControl';
+import DrawControl from './Controls/Shapes/DrawControl';
 import FilterControl from './Controls/Filters/FilterControl';
 import FiltersRangeBar from './Controls/RangeBar/FiltersRangeBar';
 import ColorPickerControl from './Controls/ColorPicker/ColorPickerControl';
@@ -29,8 +28,7 @@ export default class ControlsContainer extends Component {
                     <PickImageControl imageChanged={this.props.imageChanged}/>
                 </div>
                 <div className='controls shape-controls'>
-                    <WriteLineControl currentShapeChanged={this.props.currentShapeChanged}/>
-                    <WriteRectangleControl currentShapeChanged={this.props.currentShapeChanged}/>
+                    <DrawControl currentShapeChanged={this.props.currentShapeChanged}/>
                 </div>
                 <div className='controls filter-controls'>
                     {FiltersRenderList}

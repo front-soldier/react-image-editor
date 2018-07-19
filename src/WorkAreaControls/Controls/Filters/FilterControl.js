@@ -3,7 +3,11 @@ import React, {Component} from 'react';
 export default class FilterControl extends Component {
     filterName = this.props.filterName;
     propertyChange = () => {
-        this.props.activeFilterChanged(this.filterName);
+        if (this.props.currentFilter !== this.filterName) {
+            this.props.activeFilterChanged(this.filterName);
+        } else {
+            this.props.activeFilterChanged('');
+        }
     };
     render() {
         return (

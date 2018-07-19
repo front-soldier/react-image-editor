@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
-export default class WriteLineControl extends Component {
+export default class DrawControl extends Component {
     writeLineClick = () => {
-        this.props.currentShapeChanged('line');
+        this.props.currentShapeChanged('draw');
     };
     render() {
         return (

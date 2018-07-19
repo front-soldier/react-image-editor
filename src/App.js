@@ -14,6 +14,10 @@ const defaultFilters = {
     saturate: '100',
     sepia: '0'
 };
+const defaultActiveFilter = {
+    currentFilter: '',
+    filterValue: '',
+};
 const defaultCanvasState = {
     clickX: [],
     clickY: [],
@@ -26,6 +30,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         const defFil = {...defaultFilters};
+        const defActFil = {...defaultActiveFilter};
         const defCanvasState = {...defaultCanvasState};
         this.state = {
             image: {
@@ -42,10 +47,7 @@ class App extends Component {
                 shapeSizeValue: 5
             },
             canvasState: defCanvasState,
-            activeFilter: {
-                currentFilter: '',
-                filterValue: '',
-            },
+            activeFilter: defActFil,
             filters: defFil
         };
         this.history = [];
@@ -55,17 +57,15 @@ class App extends Component {
 
     imageChanged = (image) => {
         const defFil = {...defaultFilters};
+        const defActFil = {...defaultActiveFilter};
         const defCanvasState = {...defaultCanvasState};
         this.setState({
             image: image,
             filters: defFil,
             canvasState: defCanvasState,
-            activeFilter: {
-                currentFilter: '',
-                filterValue: ''
-            },
+            activeFilter: defActFil
         }, () => {
-            this.addToHistory();
+            this.addStory();
         });
     };
 
@@ -75,7 +75,7 @@ class App extends Component {
             newState.activeShape.currentShape = shape;
             return newState;
         }, () => {
-            this.addToHistory();
+            this.addStory();
         });
     };
 
@@ -85,7 +85,7 @@ class App extends Component {
             newState.activeShape.shapeColor = color.hex;
             return newState;
         }, () => {
-            this.addToHistory();
+            this.addStory();
         });
     };
 
@@ -97,29 +97,28 @@ class App extends Component {
             case 'large' : size = 10; break;
             case 'huge' : size = 15; break;
             default : break;
-        };
+        }
         this.setState((prevState) => {
             const newState =  {...prevState};
             newState.activeShape.shapeSizeName = sizeName;
             newState.activeShape.shapeSizeValue = size;
             return newState;
         }, () => {
-            this.addToHistory();
+            this.addStory();
         });
     };
 
     activeFilterChanged = (filter) => {
+        const activeFilter = {
+            currentFilter: filter,
+            filterValue: this.state.filters[filter]
+        };
         this.setState({
-           activeFilter: {
-               currentFilter: filter,
-               filterValue: this.state.filters[filter]
-           }
+           activeFilter: filter ? activeFilter : {...defaultActiveFilter}
         }, () => {
-            this.addToHistory();
+            this.addStory();
         });
     };
-
-
 
     filterChanged = (filter) => {
         this.setState((prevState) => {
@@ -140,22 +139,19 @@ class App extends Component {
             return newState;
         });
     };
-    addToHistory() {
-        this.addStory();
-    };
     addStory = () => {
-        if (this.history.length >= 30) {
+        if (this.history.length >= 30) { // memory size
             this.history.shift();
         }
         this.history = this.history.slice(0, this.historyPointer);
         this.history.push(JSON.parse(JSON.stringify(this.state)));
         this.historyPointer++;
-    }
+        this.forceUpdate();
+    };
     undoState = () => {
         this.historyPointer--;
         if (this.history[this.historyPointer - 1] === undefined) {
             this.historyPointer++;
-            console.log('fail undo');
             return;
         }
         this.setState(JSON.parse(JSON.stringify(this.history[this.historyPointer - 1])));
@@ -164,7 +160,6 @@ class App extends Component {
         this.historyPointer++;
         if (this.history[this.historyPointer - 1] === undefined) {
             this.historyPointer--;
-            console.log('fail redo');
             return;
         }
         this.setState(JSON.parse(JSON.stringify(this.history[this.historyPointer - 1])));
@@ -208,8 +203,8 @@ class App extends Component {
                                    imageUrl={this.state.image.imageUrl}
                                    addStory={this.addStory}>
                     <div>
-                        <div className={(this.historyPointer <= 1 ? ' disabled ' : '')} onClick={this.undoState}>Undo</div>
-                        <div className={(this.historyPointer >= this.history.length ? ' disabled ' : '')} onClick={this.redoState}>Redo</div>
+                        <div className={(this.historyPointer <= 1 ? 'disabled' : '')} onClick={this.undoState}>Undo</div>
+                        <div className={(this.historyPointer >= this.history.length ? 'disabled' : '')} onClick={this.redoState}>Redo</div>
                     </div>
                 </ControlsContainer>
             </div>
