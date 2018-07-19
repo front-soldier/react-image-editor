@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 export default class WriteLineControl extends Component {
     writeLineClick = () => {
-        this.props.activeShapeChanged('line');
+        this.props.currentShapeChanged('line');
     };
     render() {
         return (

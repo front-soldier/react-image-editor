@@ -27,7 +27,12 @@ class App extends Component {
                     height: ''
                 }
             },
-            activeShape: '',
+            activeShape: {
+                currentShape: '',
+                shapeColor: '#df4b26',
+                shapeSizeName: 'normal',
+                shapeSizeValue: 5
+            },
             activeFilter: {
                 currentFilter: '',
                 filterValue: ''
@@ -48,9 +53,36 @@ class App extends Component {
         });
     };
 
-    activeShapeChanged = (shape) => {
-        this.setState({
-            activeShape: shape
+    currentShapeChanged = (shape) => {
+        this.setState((prevState) => {
+            const newState =  {...prevState};
+            newState.activeShape.currentShape = shape;
+            return newState;
+        });
+    };
+
+    shapeColorChanged = (color) => {
+        this.setState((prevState) => {
+            const newState =  {...prevState};
+            newState.activeShape.shapeColor = color.hex;
+            return newState;
+        });
+    };
+
+    shapeSizeChanged = (sizeName) => {
+        let size;
+        switch (sizeName) {
+            case 'small' : size = 2; break;
+            case 'normal' : size = 5; break;
+            case 'large' : size = 10; break;
+            case 'huge' : size = 15; break;
+            default : break;
+        };
+        this.setState((prevState) => {
+            const newState =  {...prevState};
+            newState.activeShape.shapeSizeName = sizeName;
+            newState.activeShape.shapeSizeValue = size;
+            return newState;
         });
     };
 
@@ -75,13 +107,17 @@ class App extends Component {
     render() {
         return (
             <div className='container'>
-                <WorkAreaContainer currState={this.state}></WorkAreaContainer>
+                <WorkAreaContainer currState={this.state}
+                                   activeShape={this.state.activeShape}/>
                 <ControlsContainer imageChanged={this.imageChanged}
-                                   activeShapeChanged={this.activeShapeChanged}
+                                   currentShapeChanged={this.currentShapeChanged}
                                    activeFilterChanged={this.activeFilterChanged}
                                    filterChanged={this.filterChanged}
-                                   activeFilter={this.state.activeFilter}>
-                </ControlsContainer>
+                                   activeFilter={this.state.activeFilter}
+                                   shapeColor={this.state.activeShape.shapeColor}
+                                   shapeColorChanged={this.shapeColorChanged}
+                                   shapeSizeName={this.state.activeShape.shapeSizeName}
+                                   shapeSizeChanged={this.shapeSizeChanged}/>
             </div>
         );
     }

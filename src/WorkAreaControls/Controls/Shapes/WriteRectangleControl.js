@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 export default class WriteRectangleControl extends Component {
     writeRectangleClick = () => {
-        this.props.activeShapeChanged('rectangle');
+        this.props.currentShapeChanged('rectangle');
     };
     render() {
         return (

@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "react": "^16.4.1",
+    "react-avatar-editor": "^11.0.4",
+    "react-color": "^2.14.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
   },

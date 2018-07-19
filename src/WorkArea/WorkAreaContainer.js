@@ -6,7 +6,9 @@ export default class WorkAreaContainer extends Component {
     render() {
         return (
             <div className='canvas-field'>
-                <WorkArea currState={this.props.currState}></WorkArea>
+                <WorkArea
+                    currState={this.props.currState}
+                    activeShape={this.props.activeShape}/>
             </div>
         );
     }
