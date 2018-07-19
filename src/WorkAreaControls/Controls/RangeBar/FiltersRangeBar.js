@@ -11,6 +11,10 @@ export default class FiltersRangeBar extends Component {
         this.props.filterChanged(filter);
     };
 
+    handleMouseUp = () => {
+        this.props.addStory();
+    };
+
     render() {
         let min, max;
         switch (this.props.activeFilter.currentFilter) {
@@ -56,7 +60,13 @@ export default class FiltersRangeBar extends Component {
         }
         return (
             <div className="rangebar-container">
-                <input className={'rangebar' + (!this.props.activeFilter.filterValue ? ' disabled ' : '')} type="range" max={max} min={min} value={this.props.activeFilter.filterValue} onChange={(event) => {this.filterValueChanged(event)}}/>
+                <input className={'rangebar' + (!this.props.activeFilter.filterValue ? ' disabled ' : '')}
+                       type="range"
+                       max={max}
+                       min={min}
+                       value={this.props.activeFilter.filterValue}
+                       onChange={(event) => {this.filterValueChanged(event)}}
+                       onMouseUp={this.handleMouseUp}/>
             </div>
         );
     }

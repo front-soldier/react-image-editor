@@ -13,7 +13,7 @@ export default class WorkAreaContainer extends Component {
                     image={this.props.image}
                     canvasState={this.props.canvasState}
                     canvasStateChanged={this.props.canvasStateChanged}
-                />
+                    addStory={this.props.addStory}/>
             </div>
         );
     }

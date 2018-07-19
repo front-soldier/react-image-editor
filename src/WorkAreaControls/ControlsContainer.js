@@ -36,7 +36,7 @@ export default class ControlsContainer extends Component {
                     {FiltersRenderList}
                 </div>
                 <div>
-                    <FiltersRangeBar filterChanged={this.props.filterChanged} activeFilter={this.props.activeFilter}/>
+                    <FiltersRangeBar filterChanged={this.props.filterChanged} activeFilter={this.props.activeFilter} addStory={this.props.addStory}/>
                 </div>
                 <div>
                     <ColorPickerControl
@@ -49,10 +49,7 @@ export default class ControlsContainer extends Component {
                 <div className='controls'>
                     <DownloadControl filters={this.props.filters} imageUrl={this.props.imageUrl}/>
                 </div>
-                <div>
-                    <div onClick={this.props.undoState}>Undo</div>
-                    <div onClick={this.props.redoState}>Redo</div>
-                </div>
+                {this.props.children}
             </div>
         )
     }

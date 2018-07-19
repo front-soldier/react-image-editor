@@ -27,8 +27,6 @@ class App extends Component {
         super(props);
         const defFil = {...defaultFilters};
         const defCanvasState = {...defaultCanvasState};
-        this.history = [];
-        this.historyPointer = this.history.length;
         this.state = {
             image: {
                 imageUrl: '',
@@ -46,10 +44,13 @@ class App extends Component {
             canvasState: defCanvasState,
             activeFilter: {
                 currentFilter: '',
-                filterValue: ''
+                filterValue: '',
             },
             filters: defFil
         };
+        this.history = [];
+        this.history.push(JSON.parse(JSON.stringify(this.state)));
+        this.historyPointer = this.history.length;
     }
 
     imageChanged = (image) => {
@@ -118,14 +119,14 @@ class App extends Component {
         });
     };
 
+
+
     filterChanged = (filter) => {
         this.setState((prevState) => {
             const newState =  {...prevState};
             newState.filters[filter.type] = filter.value;
             newState.activeFilter.filterValue = filter.value;
             return newState;
-        }, () => {
-            this.addToHistory();
         });
     };
     canvasStateChanged = (mouseX, mouseY, dragging, shapeColor, shapeSizeValue) => {
@@ -137,22 +138,13 @@ class App extends Component {
             newState.canvasState.clickColor.push(shapeColor);
             newState.canvasState.clickSize.push(shapeSizeValue);
             return newState;
-        }, () => {
-            this.addToHistoryDrawing();
         });
     };
     addToHistory() {
         this.addStory();
     };
-    addToHistoryDrawing() {
-        const clickDrag = this.state.canvasState.clickDrag;
-        if (clickDrag[clickDrag.length-2] && !clickDrag[clickDrag.length-1]) // Check if the line was finished to draw
-        {
-            this.addStory();
-        }
-    }
-    addStory() {
-        if (this.history.length >= 20) {
+    addStory = () => {
+        if (this.history.length >= 30) {
             this.history.shift();
         }
         this.history = this.history.slice(0, this.historyPointer);
@@ -161,11 +153,36 @@ class App extends Component {
     }
     undoState = () => {
         this.historyPointer--;
-        this.setState(this.history[this.historyPointer - 1]);
+        if (this.history[this.historyPointer - 1] === undefined) {
+            this.historyPointer++;
+            console.log('fail undo');
+            return;
+        }
+        this.setState(JSON.parse(JSON.stringify(this.history[this.historyPointer - 1])));
     };
     redoState = () => {
         this.historyPointer++;
-        this.setState(this.history[this.historyPointer - 1]);
+        if (this.history[this.historyPointer - 1] === undefined) {
+            this.historyPointer--;
+            console.log('fail redo');
+            return;
+        }
+        this.setState(JSON.parse(JSON.stringify(this.history[this.historyPointer - 1])));
+    };
+
+    componentDidMount() {
+        document.onkeydown = this.keyDownHandler;
+    }
+
+    keyDownHandler = (ev) => {
+        if (ev.keyCode === 90 && ev.ctrlKey && ev.shiftKey) {
+            this.redoState();
+            return;
+        }
+        if (ev.keyCode ===  90 && ev.ctrlKey) {
+            this.undoState();
+            return;
+        }
     };
 
     render() {
@@ -176,7 +193,8 @@ class App extends Component {
                                    image={this.state.image}
                                    canvasState={this.state.canvasState}
                                    canvasStateChanged={this.canvasStateChanged}
-                                   activeShape={this.state.activeShape}/>
+                                   activeShape={this.state.activeShape}
+                                   addStory={this.addStory}/>
                 <ControlsContainer imageChanged={this.imageChanged}
                                    currentShapeChanged={this.currentShapeChanged}
                                    activeFilterChanged={this.activeFilterChanged}
@@ -188,8 +206,12 @@ class App extends Component {
                                    shapeSizeChanged={this.shapeSizeChanged}
                                    filters={this.state.filters}
                                    imageUrl={this.state.image.imageUrl}
-                                   undoState={this.undoState}
-                                   redoState={this.redoState}/>
+                                   addStory={this.addStory}>
+                    <div>
+                        <div className={(this.historyPointer <= 1 ? ' disabled ' : '')} onClick={this.undoState}>Undo</div>
+                        <div className={(this.historyPointer >= this.history.length ? ' disabled ' : '')} onClick={this.redoState}>Redo</div>
+                    </div>
+                </ControlsContainer>
             </div>
         );
     }

@@ -59,6 +59,8 @@ export default class WorkArea extends Component {
         this.redraw();
         this.setState({
             paint: false
+        }, () => {
+            this.props.addStory();
         });
     };
     handleMouseLeave = (ev) => {
