@@ -14,11 +14,19 @@ const defaultFilters = {
     saturate: '100',
     sepia: '0'
 };
+const defaultCanvasState = {
+    clickX: [],
+    clickY: [],
+    clickDrag: [],
+    clickColor: [],
+    clickSize: []
+};
 
 class App extends Component {
     constructor(props) {
         super(props);
         const defFil = {...defaultFilters};
+        const defCanvasState = {...defaultCanvasState};
         this.history = [];
         this.historyPointer = this.history.length;
         this.state = {
@@ -35,13 +43,7 @@ class App extends Component {
                 shapeSizeName: 'normal',
                 shapeSizeValue: 5
             },
-            canvasState: {
-                clickX: [],
-                clickY: [],
-                clickDrag: [],
-                clickColor: [],
-                clickSize: [],
-            },
+            canvasState: defCanvasState,
             activeFilter: {
                 currentFilter: '',
                 filterValue: ''
@@ -51,10 +53,12 @@ class App extends Component {
     }
 
     imageChanged = (image) => {
-        const defFil = JSON.parse(JSON.stringify(defaultFilters));
+        const defFil = {...defaultFilters};
+        const defCanvasState = {...defaultCanvasState};
         this.setState({
             image: image,
             filters: defFil,
+            canvasState: defCanvasState,
             activeFilter: {
                 currentFilter: '',
                 filterValue: ''
@@ -154,7 +158,6 @@ class App extends Component {
         this.history = this.history.slice(0, this.historyPointer);
         this.history.push(JSON.parse(JSON.stringify(this.state)));
         this.historyPointer++;
-        console.log(this.history);
     }
     undoState = () => {
         this.historyPointer--;

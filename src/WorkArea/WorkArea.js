@@ -10,7 +10,6 @@ export default class WorkArea extends Component {
         };
     }
     componentDidMount() {
-        console.log('mounted');
         this.setState({
             context: this.state.canvasRef.current.getContext('2d')
         });
@@ -68,9 +67,7 @@ export default class WorkArea extends Component {
         });
     };
     componentDidUpdate() {
-        console.log('update');
         this.redraw();
-        return true;
     }
     render() {
         const background = {
