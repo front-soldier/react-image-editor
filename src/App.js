@@ -29,9 +29,6 @@ const defaultCanvasState = {
 class App extends Component {
     constructor(props) {
         super(props);
-        const defFil = {...defaultFilters};
-        const defActFil = {...defaultActiveFilter};
-        const defCanvasState = {...defaultCanvasState};
         this.state = {
             image: {
                 imageUrl: '',
@@ -46,9 +43,9 @@ class App extends Component {
                 shapeSizeName: 'normal',
                 shapeSizeValue: 5
             },
-            canvasState: defCanvasState,
-            activeFilter: defActFil,
-            filters: defFil
+            canvasState: {...defaultCanvasState},
+            activeFilter: {...defaultActiveFilter},
+            filters: {...defaultFilters}
         };
         this.history = [];
         this.history.push(JSON.parse(JSON.stringify(this.state)));
@@ -56,14 +53,11 @@ class App extends Component {
     }
 
     imageChanged = (image) => {
-        const defFil = {...defaultFilters};
-        const defActFil = {...defaultActiveFilter};
-        const defCanvasState = {...defaultCanvasState};
         this.setState({
             image: image,
-            filters: defFil,
-            canvasState: defCanvasState,
-            activeFilter: defActFil
+            filters: {...defaultFilters},
+            canvasState: {...defaultCanvasState},
+            activeFilter: {...defaultActiveFilter}
         }, () => {
             this.addStory();
         });
@@ -176,7 +170,6 @@ class App extends Component {
         }
         if (ev.keyCode ===  90 && ev.ctrlKey) {
             this.undoState();
-            return;
         }
     };
 

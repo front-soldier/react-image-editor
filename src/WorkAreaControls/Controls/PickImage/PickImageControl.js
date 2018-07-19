@@ -9,23 +9,25 @@ export default class PickImageControl extends Component {
         const imgChanged = this.props.imageChanged.bind(this);
         reader.onloadend = () => {
             const imageUrl = reader.result;
-            const i = new Image();
-            i.onload = () => {
-                const dimensions = this.calcImageDimensions(i);
+            const resultImage = new Image();
+            resultImage.onload = () => {
+                const dimensions = this.calcImageDimensions(resultImage);
                 imgChanged({
                     imageUrl: imageUrl,
                     dimensions
                 });
             };
-            i.src = imageUrl;
+            resultImage.src = imageUrl;
         };
         reader.readAsDataURL(img);
     };
-    calcImageDimensions = (i) => {
-        const maxWidth = window.innerWidth - 300; //300px right control panel
-        const maxHeight = window.innerHeight - 100;
-        let width = i.naturalWidth;
-        let height = i.naturalHeight;
+    calcImageDimensions = (resultImage) => {
+        const rightControlPanel = 300;
+        const canvasPadding = 100;
+        const maxWidth = window.innerWidth - rightControlPanel;
+        const maxHeight = window.innerHeight - canvasPadding;
+        let width = resultImage.naturalWidth;
+        let height = resultImage.naturalHeight;
         let ratio = 0;
         if (width > maxWidth) {
             ratio = maxWidth / width;
@@ -37,11 +39,10 @@ export default class PickImageControl extends Component {
             width = width * ratio;
             height = height * ratio;
         }
-        let dimensions = {
+        return {
             width,
             height
         };
-        return dimensions;
     };
     render() {
         return (
