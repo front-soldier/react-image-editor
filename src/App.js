@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import WorkAreaContainer from './WorkArea/WorkAreaContainer';
+import WorkAreaContainer from './Components/WorkArea/WorkAreaContainer';
 import ControlsContainer from "./WorkAreaControls/ControlsContainer";
 import './App.css';
+import 'normalize.css';
 
 const defaultFilters = {
     blur: '0',
@@ -176,13 +177,6 @@ class App extends Component {
     render() {
         return (
             <div className='container'>
-                <WorkAreaContainer currState={this.state}
-                                   filters={this.state.filters}
-                                   image={this.state.image}
-                                   canvasState={this.state.canvasState}
-                                   canvasStateChanged={this.canvasStateChanged}
-                                   activeShape={this.state.activeShape}
-                                   addStory={this.addStory}/>
                 <ControlsContainer imageChanged={this.imageChanged}
                                    currentShapeChanged={this.currentShapeChanged}
                                    activeFilterChanged={this.activeFilterChanged}
@@ -200,6 +194,13 @@ class App extends Component {
                         <div className={(this.historyPointer >= this.history.length ? 'disabled' : '')} onClick={this.redoState}>Redo</div>
                     </div>
                 </ControlsContainer>
+                <WorkAreaContainer currState={this.state}
+                                   filters={this.state.filters}
+                                   image={this.state.image}
+                                   canvasState={this.state.canvasState}
+                                   canvasStateChanged={this.canvasStateChanged}
+                                   activeShape={this.state.activeShape}
+                                   addStory={this.addStory}/>
             </div>
         );
     }

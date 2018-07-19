@@ -19,19 +19,20 @@ export default class WorkArea extends Component {
     };
     redraw = () => {
         const canvasContext = this.state.context;
+        const canvasState = this.props.canvasState;
         canvasContext.clearRect(0, 0, canvasContext.canvas.width, canvasContext.canvas.height);
         canvasContext.lineJoin = "round";
-        this.props.canvasState.clickX.forEach((el, index) => {
+        canvasState.clickX.forEach((el, index) => {
             canvasContext.beginPath();
-            if (this.props.canvasState.clickDrag[index] && index) {
-                canvasContext.moveTo(this.props.canvasState.clickX[index - 1], this.props.canvasState.clickY[index - 1]);
+            if (canvasState.clickDrag[index] && index) {
+                canvasContext.moveTo(canvasState.clickX[index - 1], canvasState.clickY[index - 1]);
             } else {
-                canvasContext.moveTo(this.props.canvasState.clickX[index] - 1, this.props.canvasState.clickY[index]);
+                canvasContext.moveTo(canvasState.clickX[index] - 1, canvasState.clickY[index]);
             }
-            canvasContext.lineTo(this.props.canvasState.clickX[index], this.props.canvasState.clickY[index]);
+            canvasContext.lineTo(canvasState.clickX[index], canvasState.clickY[index]);
             canvasContext.closePath();
-            canvasContext.strokeStyle = this.props.canvasState.clickColor[index];
-            canvasContext.lineWidth = this.props.canvasState.clickSize[index];
+            canvasContext.strokeStyle = canvasState.clickColor[index];
+            canvasContext.lineWidth = canvasState.clickSize[index];
             canvasContext.stroke();
         })
     };
@@ -72,27 +73,28 @@ export default class WorkArea extends Component {
         this.redraw();
     }
     render() {
+        const { filters, image } = this.props;
         const background = {
-            backgroundImage: 'url(' + this.props.image.imageUrl + ')'
+            backgroundImage: 'url(' + image.imageUrl + ')'
         };
-        const filters = {
+        const resultFilters = {
             filter:
-                `blur(${this.props.filters.blur}px) ` +
-                `brightness(${this.props.filters.brightness}%) ` +
-                `contrast(${this.props.filters.contrast}%) ` +
-                `grayscale(${this.props.filters.grayscale}%) ` +
-                `hue-rotate(${this.props.filters.hueRotate}deg) ` +
-                `invert(${this.props.filters.invert}%) ` +
-                `opacity(${this.props.filters.opacity}%) ` +
-                `saturate(${this.props.filters.saturate}%) ` +
-                `sepia(${this.props.filters.sepia}%)`
+                `blur(${filters.blur}px) ` +
+                `brightness(${filters.brightness}%) ` +
+                `contrast(${filters.contrast}%) ` +
+                `grayscale(${filters.grayscale}%) ` +
+                `hue-rotate(${filters.hueRotate}deg) ` +
+                `invert(${filters.invert}%) ` +
+                `opacity(${filters.opacity}%) ` +
+                `saturate(${filters.saturate}%) ` +
+                `sepia(${filters.sepia}%)`
         };
-        const canvasStyle = {...background, ...filters};
+        const canvasStyle = {...background, ...resultFilters};
         return (
             <canvas className="work-canvas"
                     style={canvasStyle}
-                    width={this.props.image.dimensions.width}
-                    height={this.props.image.dimensions.height}
+                    width={image.dimensions.width}
+                    height={image.dimensions.height}
                     ref={this.state.canvasRef}
                     onMouseDown={(event) => {this.handleMouseDown(event)}}
                     onMouseMove={(event) => {this.handleMouseMove(event)}}
