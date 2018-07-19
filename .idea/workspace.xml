@@ -2,32 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56240ebd-065d-4e79-8e40-bfc18b4ae548" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/ApplyComponent/ApplyComponent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/CropContainerComponent/CropContainerComponent.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/DrawContainerComponent/ColorPickerComponent/ColorPickerComponent.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/DrawContainerComponent/DrawContainerComponent.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/DrawContainerComponent/DrawSizeComponent/DrawSizeComponent.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ControlBarComponent/ControlBarComponent.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/ControlBarComponent.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ControlBarComponent/ControlBarComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/ControlBarComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ControlBarComponent/CropContainerComponent/CropContainerComponent.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/CropContainerComponent/CropContainerComponent.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ControlBarComponent/CropContainerComponent/CropContainerComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/CropContainerComponent/CropContainerComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ControlBarComponent/DownloadComponent/DownloadComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/DownloadComponent/DownloadComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ControlBarComponent/DrawContainerComponent/ColorPickerComponent/ColorPickerComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/DrawContainerComponent/ColorPickerComponent/ColorPickerComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ControlBarComponent/DrawContainerComponent/DrawContainerComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/DrawContainerComponent/DrawContainerComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ControlBarComponent/DrawContainerComponent/DrawSizeComponent/DrawSizeComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/DrawContainerComponent/DrawSizeComponent/DrawSizeComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/FilterComponent/FilterComponent.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/FilterComponent/FilterComponent.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/FilterComponent/FilterComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/FilterComponent/FilterComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/FilterContainerComponent.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/FilterContainerComponent.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/FilterContainerComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/FilterContainerComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/RangeBarComponent/RangeBarComponent.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/RangeBarComponent/RangeBarComponent.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/RangeBarComponent/RangeBarComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/RangeBarComponent/RangeBarComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/WorkAreaComponent/PickImageComponent/PickImageComponent.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/WorkAreaComponent/PickImageComponent/PickImageComponent.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/WorkAreaComponent/PickImageComponent/PickImageComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/WorkAreaComponent/PickImageComponent/PickImageComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaContainerComponent.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaContainerComponent.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaContainerComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaContainerComponent.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -42,32 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TopBarComponent.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Components/TopBarComponent/TopBarComponent.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WorkAreaContainerComponent.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaContainerComponent.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="21" column="90" selection-start-line="21" selection-start-column="90" selection-end-line="21" selection-end-column="90" />
+            <state relative-caret-position="486">
+              <caret line="156" column="23" lean-forward="true" selection-start-line="156" selection-start-column="23" selection-end-line="156" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -75,8 +33,8 @@
       <file leaf-file-name="WorkAreaComponent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="103" selection-start-line="103" selection-end-line="103" />
+            <state relative-caret-position="456">
+              <caret line="108" column="24" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="24" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -93,6 +51,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="WorkAreaContainerComponent.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaContainerComponent.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="FilterComponent.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/FilterComponent/FilterComponent.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -105,7 +72,7 @@
       <file leaf-file-name="RangeBarComponent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/RangeBarComponent/RangeBarComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
+            <state relative-caret-position="456">
               <caret line="62" column="47" selection-start-line="62" selection-start-column="47" selection-end-line="62" selection-end-column="47" />
             </state>
           </provider>
@@ -115,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/src/Components/ControlBarComponent/ControlBarComponent.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="525">
-              <caret line="45" column="45" lean-forward="true" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
+              <caret line="45" column="45" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -126,11 +93,20 @@
       <file leaf-file-name="CropContainerComponent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Components/ControlBarComponent/CropContainerComponent/CropContainerComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="14" column="55" lean-forward="true" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+            <state relative-caret-position="381">
+              <caret line="42" column="57" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="57" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CropContainerComponent.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Components/ControlBarComponent/CropContainerComponent/CropContainerComponent.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -229,7 +205,6 @@
         <option value="$PROJECT_DIR$/src/Components/ControlBarComponent/DrawContainerComponent/DrawSizeComponent/DrawSizeComponent.css" />
         <option value="$PROJECT_DIR$/src/Components/WorkAreaComponent/PickImageComponent/PickImageComponent.js" />
         <option value="$PROJECT_DIR$/src/Components/WorkAreaComponent/PickImageComponent/PickImageComponent.css" />
-        <option value="$PROJECT_DIR$/src/Components/ControlBarComponent/CropContainerComponent/CropContainerComponent.css" />
         <option value="$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaContainerComponent.css" />
         <option value="$PROJECT_DIR$/src/Components/WorkAreaComponent/CropAreaComponent/CropAreaComponent.js" />
         <option value="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/FilterContainerComponent.js" />
@@ -237,13 +212,14 @@
         <option value="$PROJECT_DIR$/src/Components/ControlBarComponent/ApplyComponent.js" />
         <option value="$PROJECT_DIR$/src/Components/ControlBarComponent/ApplyComponent/ApplyComponent.js" />
         <option value="$PROJECT_DIR$/src/Components/ControlBarComponent/ControlBarComponent.js" />
-        <option value="$PROJECT_DIR$/src/Components/ControlBarComponent/CropContainerComponent/CropContainerComponent.js" />
-        <option value="$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaContainerComponent.js" />
         <option value="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/RangeBarComponent/RangeBarComponent.js" />
         <option value="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/FilterComponent/FilterComponent.css" />
         <option value="$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/RangeBarComponent/RangeBarComponent.css" />
+        <option value="$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaContainerComponent.js" />
         <option value="$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaComponent.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/Components/ControlBarComponent/CropContainerComponent/CropContainerComponent.js" />
+        <option value="$PROJECT_DIR$/src/Components/ControlBarComponent/CropContainerComponent/CropContainerComponent.css" />
       </list>
     </option>
   </component>
@@ -325,32 +301,6 @@
               <item name="react-image-editor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="ControlBarComponent" type="462c0819:PsiDirectoryNode" />
-              <item name="FilterContainerComponent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react-image-editor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react-image-editor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="ControlBarComponent" type="462c0819:PsiDirectoryNode" />
-              <item name="FilterContainerComponent" type="462c0819:PsiDirectoryNode" />
-              <item name="FilterComponent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react-image-editor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react-image-editor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
-              <item name="ControlBarComponent" type="462c0819:PsiDirectoryNode" />
-              <item name="FilterContainerComponent" type="462c0819:PsiDirectoryNode" />
-              <item name="RangeBarComponent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="react-image-editor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="react-image-editor" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Components" type="462c0819:PsiDirectoryNode" />
               <item name="TopBarComponent" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -361,6 +311,13 @@
               <item name="TopBarComponent" type="462c0819:PsiDirectoryNode" />
               <item name="HistoryTravelComponent" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="react-image-editor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-image-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Components" type="462c0819:PsiDirectoryNode" />
+              <item name="WorkAreaComponent" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -369,7 +326,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../newpp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -445,11 +402,13 @@
       <workItem from="1531721104259" duration="28903000" />
       <workItem from="1531808488722" duration="13522000" />
       <workItem from="1531827836682" duration="4000" />
+      <workItem from="1531828138988" duration="2808000" />
+      <workItem from="1531834926284" duration="3464000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227823000" />
+    <option name="totallyTimeSpent" value="234095000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -461,7 +420,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21233624" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32948583" />
@@ -471,7 +431,7 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49836245" visible="true" weight="0.23924449" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49836245" visible="true" weight="0.24658972" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -674,13 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/ControlBarComponent/CropContainerComponent/CropContainerComponent.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-482">
-          <caret line="29" column="19" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/ControlBarComponent/DrawContainerComponent/DrawContainerComponent.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -731,33 +684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/ControlBarComponent/ControlBarComponent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="45" column="45" lean-forward="true" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/ControlBarComponent/CropContainerComponent/CropContainerComponent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" column="55" lean-forward="true" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/RangeBarComponent/RangeBarComponent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="62" column="47" selection-start-line="62" selection-start-column="47" selection-end-line="62" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/FilterComponent/FilterComponent.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -779,30 +705,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaContainerComponent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="21" column="90" selection-start-line="21" selection-start-column="90" selection-end-line="21" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaComponent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="103" selection-start-line="103" selection-end-line="103" />
+        <state relative-caret-position="456">
+          <caret line="108" column="24" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="24" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/ControlBarComponent/ControlBarComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="45" column="45" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/ControlBarComponent/FilterContainerComponent/RangeBarComponent/RangeBarComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="62" column="47" selection-start-line="62" selection-start-column="47" selection-end-line="62" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        <state relative-caret-position="486">
+          <caret line="156" column="23" lean-forward="true" selection-start-line="156" selection-start-column="23" selection-end-line="156" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/ControlBarComponent/CropContainerComponent/CropContainerComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="42" column="57" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="57" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/ControlBarComponent/CropContainerComponent/CropContainerComponent.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Components/WorkAreaComponent/WorkAreaContainerComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
         </state>
       </provider>
     </entry>

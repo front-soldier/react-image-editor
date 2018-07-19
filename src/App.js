@@ -148,7 +148,7 @@ class App extends Component {
     };
     undoState = () => {
         this.historyPointer--;
-        if (this.history[this.historyPointer - 1] === undefined) {
+        if (!this.history[this.historyPointer - 1]) {
             this.historyPointer++;
             return;
         }
@@ -156,7 +156,7 @@ class App extends Component {
     };
     redoState = () => {
         this.historyPointer++;
-        if (this.history[this.historyPointer - 1] === undefined) {
+        if (!this.history[this.historyPointer - 1]) {
             this.historyPointer--;
             return;
         }

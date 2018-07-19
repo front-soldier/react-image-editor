@@ -6,23 +6,34 @@ import './WorkAreaContainerComponent.css'
 export default class WorkAreaContainerComponent extends Component {
     render() {
         const imageUrl = this.props.image.imageUrl;
+        const {
+            activeDraw,
+            filters,
+            image,
+            canvasState,
+            canvasStateChanged,
+            activeAction,
+            addStory,
+            cropper,
+            cropperDimensionsChanged,
+            imageChanged
+        } = this.props;
         return (
             <div className='edit-section'>
                 {imageUrl ? (
                         <WorkAreaComponent
-                            currState={this.props.currState}
-                            activeDraw={this.props.activeDraw}
-                            filters={this.props.filters}
-                            image={this.props.image}
-                            canvasState={this.props.canvasState}
-                            canvasStateChanged={this.props.canvasStateChanged}
-                            activeAction={this.props.activeAction}
-                            addStory={this.props.addStory}
-                            cropper={this.props.cropper}
-                            cropperDimensionsChanged={this.props.cropperDimensionsChanged}
+                            activeDraw={activeDraw}
+                            filters={filters}
+                            image={image}
+                            canvasState={canvasState}
+                            canvasStateChanged={canvasStateChanged}
+                            activeAction={activeAction}
+                            addStory={addStory}
+                            cropper={cropper}
+                            cropperDimensionsChanged={cropperDimensionsChanged}
                         />
                 ) : (
-                    <PickImageComponent imageChanged={this.props.imageChanged}/>
+                    <PickImageComponent imageChanged={imageChanged}/>
                 )}
             </div>
         );

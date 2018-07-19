@@ -40,10 +40,12 @@ export default class CropContainerComponent extends Component {
                             <div>
                                 <label className={'crop-title'} htmlFor="crop-height">H</label>
                                 <input ref={this.state.heightRef} value={cropperHeight} onChange={this.cropperDimensionsHandler} className={'crop-input'} type="text" id={'crop-height'}/>
+                                <span className={'crop-px'}>px</span>
                             </div>
                             <div>
                                 <label className={'crop-title'} htmlFor="crop-width">W</label>
                                 <input ref={this.state.widthRef} value={cropperWidth} onChange={this.cropperDimensionsHandler} className={'crop-input'} type="text" id={'crop-width'}/>
+                                <span className={'crop-px'}>px</span>
                             </div>
                         </div>
                     </div>

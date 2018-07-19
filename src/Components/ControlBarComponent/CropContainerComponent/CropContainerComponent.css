@@ -19,9 +19,20 @@
     margin: 0 10px;
     text-align: center;
 }
+.crop-px {
+    display: inline-block;
+    color: #b9b9b8;
+    width: 20px;
+    margin: 0 10px;
+    text-align: center;
+}
 .crop-input {
     height: 20px;
     width: 100px;
+}
+.crop-input:focus {
+    outline: 1px solid rgb(7, 211, 204);
+    outline-offset: 0px;
 }
 .crop-rectangle {
     position: relative;

@@ -102,10 +102,11 @@ export default class WorkAreaComponent extends Component {
     };
     componentDidUpdate() {
         this.redraw();
-        if (this.props.activeAction === "crop" && !this.state.cropperSrc) {
+        const activeAction = this.props.activeAction;
+        if (activeAction === "crop" && !this.state.cropperSrc) {
             this.calcCropImage();
         }
-        if (this.props.activeAction !== "crop") {
+        if (activeAction !== "crop") {
             this.state.cropperSrc = '';
         }
     }
